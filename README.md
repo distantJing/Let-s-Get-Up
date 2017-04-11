@@ -1,4 +1,4 @@
-# Let-s-Get-Up
+# Let-s-Get-Up#
 ####Life service assistant based on Raspberry####
 ##基本功能##
        一款基于树莓派的智能寝室生活助手。

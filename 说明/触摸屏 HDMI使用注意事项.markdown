@@ -1,5 +1,5 @@
 ## 触摸屏 HDMI使用注意事项
-用户名pi，默认密码raspberry
+####用户名pi，默认密码raspberry####
 ###切换方法###
 
 	cd到LCD-show目录下

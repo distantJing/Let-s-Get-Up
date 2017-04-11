@@ -1,5 +1,5 @@
 # Let-s-Get-Up
-Life service assistant based on Raspberry
+####Life service assistant based on Raspberry####
 ##基本功能##
        一款基于树莓派的智能寝室生活助手。
 * 具有智能早起提醒服务，基于人脸识别技术的早起打卡的监督机制，改善生活作息。

@@ -11,3 +11,8 @@
      否则下次开机二者都无法接受到信号
 ### 若关机状态为HDMI输出，下次开机需 ###
      使用putty远程连接方式，进行1中所述操作
+
+## 树莓派进入emergency mode ##
+	umount /dev/mmcblk0p2
+	e2fsck -f -y -v -C 0 /dev/mmcblk0p2
+	reboot

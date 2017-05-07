@@ -11,7 +11,7 @@ pic_format = '.png'
 def creat_csv(peo_num):
 	path = os.path.abspath('.')
 	fo = open(path + '/data/' +"at.txt", "a")
-	for i in range(41, peo_num+1):
+	for i in range(1, peo_num+1):
 		for j in range (1, train_size+1):
 			csv = path + '/data/s' + str(i) + '/' + str(j) + pic_format+';' + str(i) + '\n'
 			print(csv)
@@ -25,7 +25,7 @@ def creat_csv(peo_num):
 def pic_catch(window_name, camera_id, peo_id):
 	window_name = 'let\'s take a picture'
 	cv2.namedWindow(window_name)
-	os.mkdir('test/s'+str(peo_id))
+	os.mkdir('picture/s'+str(peo_id))
 
 	cap = cv2.VideoCapture(camera_id)
 	pic_num = 0
@@ -41,7 +41,7 @@ def pic_catch(window_name, camera_id, peo_id):
 			cv2.destroyAllWindows()
 		elif k == ord('s'): # wait for 's' key to save and exit
 			pic_num = pic_num + 1
-			pic_path = os.path.abspath('.') + '/test/s'+ str(peo_id) + '/'
+			pic_path = os.path.abspath('.') + '/picture/s'+ str(peo_id) + '/'
 			pic_name = str(pic_num) + pic_format
 			cv2.imwrite(pic_path+pic_name,frame)
 
@@ -50,10 +50,11 @@ def face(peo_id):
 	width = 112
 	height = 92
 	face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
-	pic_path = os.path.abspath('.') + '/data/s'+ str(peo_id) + '/'
+	src_path = os.path.abspath('.') + '/picture/s'+ str(peo_id) + '/'
+	tar_path = os.path.abspath('.') + '/data/s'+ str(peo_id) + '/'
 	for i in range (1, train_size+1):
 		pic_name = str(i) + pic_format
-		img = cv2.imread(pic_path+pic_name)
+		img = cv2.imread(src_path+pic_name)
 		gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 		faces = face_cascade.detectMultiScale(gray)
 		if len(faces)>0:
@@ -63,18 +64,20 @@ def face(peo_id):
 				roi_gray = gray[y:y+h,x:x+w]  
 				roi_color = img[y:y+h,x:x+w]
 		img_face = cv2.resize(roi_gray, (height, width))
-		cv2.imwrite(pic_path+pic_name,img_face)
+		cv2.imwrite(tar_path+pic_name,img_face)
 		print(len(img_face))
 
-# face(44)
+face(44)
 
-if __name__ == '__main__':
-	if sys.argv[1] == 'pic_catch':
-		window_name = 'let\'s take a picture'
-		camera_id = 0
-		peo_id = 1
-		pic_catch(window_name, camera_id, peo_id)
-	elif sys.argv[1] == 'creat_csv':
-		peo_num = int(sys.argv[2])
-		creat_csv(peo_num)
+# if __name__ == '__main__':
+# 	if sys.argv[1] == 'pic_catch':
+# 		window_name = 'let\'s take a picture'
+# 		camera_id = 0
+# 		fo = open(os.path.abspath('.') + '/picture/log.txt')
+# 		peo_id = int(fo.readline())
+# 		fo.close()
+# 		pic_catch(window_name, camera_id, peo_id)
+# 	elif sys.argv[1] == 'creat_csv':
+# 		peo_num = int(sys.argv[2])
+# 		creat_csv(peo_num)
 

@@ -1,0 +1,25 @@
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Let's Get Up</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li {% if request.path == "/console/" %} class="active" {% endif %}><a href="{% url 'index'%}">个人信息</a></li>
+              <li {% if request.path == "/console/clock_in/" %} class="active"{% endif %}><a href="{% url 'clock_in'%}">早起打卡</a></li>
+              <li {% if request.path == "/console/music/" %} class="active"{% endif %}><a href="{% url 'music'%}">氛围音乐</a></li>
+              <li {% if request.path == "/console/weather/" %} class="active"{% endif %}><a href="{% url 'weather'%}">今日天气</a></li>
+              <li {% if request.path == "/console/about/" %} class="active"{% endif %}><a href="{% url 'about'%}">使用相关</a></li>
+              <li {% if request.path == "/console/logout/" %} class="active"{% endif %}><a href="{% url 'logout'%}">登出</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>

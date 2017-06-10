@@ -20,7 +20,6 @@ def fetchWeather(location):
     }, timeout = 1)
     ret = result.json()['results'][0]['now']
     return ret['text'], ret['temperature']
-
 if __name__ == "__main__":
     location = "成都"
     result = fetchWeather(location)

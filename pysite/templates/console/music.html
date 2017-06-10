@@ -1,0 +1,10 @@
+{% extends "console/base.html" %}
+{% block content %}
+        <h1>music</h1>
+        <p>
+          <a class="btn btn-lg btn-primary" href="{% url 'play_music'%}" role="button">播放音乐</a>
+        </p>
+        <p>
+          <a class="btn btn-lg btn-default" href="{% url 'stop_music'%}" role="button">关闭音乐</a>
+        </p>
+{% endblock %}
